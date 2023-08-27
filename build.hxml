@@ -1,0 +1,3 @@
+-cp source
+-D analyzer-optimize
+-main Main
