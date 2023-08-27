@@ -1,7 +1,5 @@
 package;
 
-import haxe.Log;
-
 /**
  * A simple Haxe program to implement Game of Life
  *
@@ -27,7 +25,7 @@ class Main
 
 	public static function main():Void
 	{
-		Log.trace('Original Generation\n');
+		Sys.println('Original Generation');
 
 		for (i in 0...M - 1)
 		{
@@ -36,10 +34,8 @@ class Main
 			for (j in 0...N - 1)
 				buffer.add(grid[i][j] == 0 ? '.' : '*');
 
-			Log.trace(buffer.toString());
+			Sys.println(buffer.toString());
 		}
-
-		Log.trace('');
 
 		var future:Array<Array<Int>> = [
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -88,7 +84,7 @@ class Main
 			}
 		}
 
-		Log.trace('Next Generation\n');
+		Sys.println('Next Generation');
 
 		for (i in 0...M - 1)
 		{
@@ -97,9 +93,7 @@ class Main
 			for (j in 0...N - 1)
 				buffer.add(future[i][j] == 0 ? '.' : '*');
 
-			Log.trace(buffer.toString());
+			Sys.println(buffer.toString());
 		}
-
-		Log.trace('');
 	}
 }
