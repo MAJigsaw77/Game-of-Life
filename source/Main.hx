@@ -9,6 +9,9 @@ import haxe.Log;
  */
 class Main
 {
+	private static final M:Int = 10;
+	private static final N:Int = 10;
+
 	private static final grid:Array<Array<Int>> = [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -19,18 +22,18 @@ class Main
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	];
 
 	public static function main():Void
 	{
 		Log.trace('Original Generation\n');
 
-		for (i in 0...grid.length - 1)
+		for (i in 0...M - 1)
 		{
 			var buffer:StringBuf = new StringBuf();
 
-			for (j in 0...grid[i].length - 1)
+			for (j in 0...N - 1)
 				buffer.add(grid[i][j] == 0 ? '.' : '*');
 
 			Log.trace(buffer.toString());
@@ -41,9 +44,9 @@ class Main
 		var future:Array<Array<Int>> = [];
 
 		// Loop through every cell
-		for (l in 0...grid.length - 1)
+		for (l in 0...M - 1)
 		{
-			for (m in 0...grid[i].length - 1)
+			for (m in 0...N - 1)
 			{
 				// Finding no of Neighbours that are alive
 
@@ -53,7 +56,7 @@ class Main
 				{
 					for (j in -1...1)
 					{
-						if ((l + i >= 0 && l + i < grid.length) && (m + j >= 0 && m + j < grid[i].length))
+						if ((l + i >= 0 && l + i < M) && (m + j >= 0 && m + j < N))
 							aliveNeighbours += grid[l + i][m + j];
 					}
 				}
@@ -76,11 +79,11 @@ class Main
 
 		Log.trace('Next Generation\n');
 
-		for (i in 0...future.length - 1)
+		for (i in 0...M - 1)
 		{
 			var buffer:StringBuf = new StringBuf();
 
-			for (j in 0...future[i].length - 1)
+			for (j in 0...N - 1)
 				buffer.add(future[i][j] == 0 ? '.' : '*');
 
 			Log.trace(buffer.toString());
